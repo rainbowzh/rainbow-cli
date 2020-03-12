@@ -30,12 +30,12 @@ if (!projectName) {  // project-name 必填  如果没有输入名称执行helph
 const list = glob.sync('*')  // 遍历当前目录,数组类型
 let next = undefined;
 let rootName = path.basename(process.cwd());
-console.log("xxx",list,rootName);
+
 if (list.length) {  // 如果当前目录不为空
   if (list.some(n => {
     const fileName = path.resolve(process.cwd(), n);
     const isDir = fs.statSync(fileName).isDirectory();
-    console.log("cccc",fileName , isDir);
+
     return projectName === n && isDir // 找到创建文件名和当前目录文件存在一致的文件
   })) { // 如果文件已经存在
     next = inquirer.prompt([
@@ -64,7 +64,6 @@ if (list.length) {  // 如果当前目录不为空
   // next = Promise.resolve(projectName);
 } else if (rootName === projectName) {  // 如果文件名和根目录文件名一致
   rootName = '.';
-  console.log("555",rootName);
   next = inquirer.prompt([
     {
       name: 'buildInCurrent',
@@ -73,12 +72,11 @@ if (list.length) {  // 如果当前目录不为空
       default: true
     }
   ]).then(answer => {
-    console.log(answer.buildInCurrent)
+    
     return Promise.resolve(answer.buildInCurrent ? '.' : projectName)
   })
 } else {
   rootName = projectName;
-  console.log("666",rootName);
   next = Promise.resolve(projectName)
 }
 }
@@ -142,7 +140,6 @@ function go () {
       // }).catch(err => {
       //   return Promise.reject(err)
       // })
-      console.log("ccc",answers) ;
       let v = answers.isRouter.toUpperCase();
       answers.isRouter = v === "YES" || v === "Y";
       // let iseslint = answers.isEslint.toUpperCase();
