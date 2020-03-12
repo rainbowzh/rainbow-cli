@@ -94,8 +94,8 @@ function go () {
     if (projectRoot !== '.') {
       fs.mkdirSync(projectRoot)
     }
-    CFonts.say('amazing', {
-      font: 'block',              // define the font face
+    CFonts.say('rainbow', {
+      font: 'simple',              // define the font face
       align: 'left',              // define text alignment
       colors: ['#f80'],         // define all colors
       background: 'transparent',  // define the background color, you can also use `backgroundColor` here as key
@@ -126,12 +126,8 @@ function go () {
         message: '项目的简介',
         default: `A project named ${context.projectRoot}`
       },{
-        name: 'isElement',
-        message: '是否使用element',
-        default: "No",
-      },{
-        name: 'isEslint',
-        message: '是否使用isEslint',
+        name: 'isRouter',
+        message: '是否使用react-router',
         default: "No",
       }
     ]).then(answers => { // 可选选项回调函数
@@ -147,10 +143,10 @@ function go () {
       //   return Promise.reject(err)
       // })
       console.log("ccc",answers) ;
-      let v = answers.isElement.toUpperCase();
-      answers.isElement = v === "YES" || v === "Y";
-      let iseslint = answers.isEslint.toUpperCase();
-      answers.isEslint = iseslint === "YES" || iseslint === "Y";
+      let v = answers.isRouter.toUpperCase();
+      answers.isRouter = v === "YES" || v === "Y";
+      // let iseslint = answers.isEslint.toUpperCase();
+      // answers.isEslint = iseslint === "YES" || iseslint === "Y";
       return {
         ...context,
         metadata: {
