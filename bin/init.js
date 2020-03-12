@@ -162,7 +162,7 @@ function go () {
   }).then(context => {
     // 成功用绿色显示，给出积极的反馈
     console.log(logSymbols.success, chalk.green('创建成功:)'))
-    console.log(chalk.green('cd ' + context.projectRoot + '\nnpm install\nnpm start'))
+    console.log(chalk.green('cd ' + context.projectRoot + '\n(c)npm install\n(c)npm start'))
   }).catch(err => {
     console.error(err)
      // 失败了用红色，增强提示
